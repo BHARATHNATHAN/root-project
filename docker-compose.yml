@@ -3,6 +3,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: "/"
     ports:
       - "80:80"
     depends_on:
@@ -23,6 +25,9 @@ services:
       DB_NAME: ${DB_NAME:?Set DB_NAME in .env}
       DB_USER: ${DB_USER:?Set DB_USER in .env}
       DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      CORS_ORIGIN: ${CORS_ORIGIN:?Set CORS_ORIGIN in .env}
+      DB_CONNECTION_LIMIT: ${DB_CONNECTION_LIMIT:?Set DB_CONNECTION_LIMIT in .env}
+
     expose:
       - "5000"
     depends_on:
